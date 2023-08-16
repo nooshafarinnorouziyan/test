@@ -1,14 +1,19 @@
-name = ("enter the name")
-family= ("enter family")
-num1=int(input("enter chemistry score"))
-num2=int(input("enter math score"))
-num3=int(input("enter physic number"))
+name = input("Enter the name:")
+family = input("Enter the family:")
+num1 = int(input("Enter the chemistry score:"))
+num2 = int(input("Enter the math score:"))
+num3 = int(input("Enter the physics score:"))
 so = num1 + num2 + num3
 avrage = so / 3
+
 if avrage < 12:
-    print("fail")
-if 12 >avrage<17:
-    print ("normal")
-    if avrage >=17 :
-        print ("great")
-        print("your name ","is" , name , family , "your", "avrage" , "is" , avrage ) 
+    print("Fail")
+    
+elif 12 <= avrage < 17:
+    print ("Normal")
+    
+else:
+    print ("Great")
+    
+print("Your name is", name, family, "and your average score is", avrage)
+
