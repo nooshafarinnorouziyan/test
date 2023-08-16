@@ -1,55 +1,57 @@
 import math 
 print ("calculator program")
+op = input("Enter operation (+, -, *, /, sin, cos, tan, cot, factorial, sqrt): ")
+
 if op == "+":
     num1 = int(input("enter num1:"))
     num2 = int(input("enter num2:"))
     result = num1 + num2
 
-if op == "-":
+elif op == "-":
     num1 = int(input("enter num1:"))
     num2 = int(input("enter num2:"))
     result = num1 - num2
 
-    if op == "*":
+elif op == "*":
      num1 = int(input("enter num1:"))
-    num2 = int(input("enter num2:"))
-    result = num1 * num2
+     num2 = int(input("enter num2:"))
+     result = num1 * num2
 
-if op == "/":
+elif op == "/":
     num1 = int(input("enter num1:"))
     num2 = int(input("enter num2:"))
     if num2 == 0 :
      result = "Error"
-else:
-   result = num1 / num2
+    else:
+       result = num1 / num2
 
+elif op == "sin":
+    num1 = int(input("enter your number (in radians):"))
+    result = math.sin(num1)
 
-   if op == "sin":
-      num1 = int(input("enter your number:"))
-      result = math.sin(num1)
+elif op == "tan":
+    num1 =int(input("enter your number (in radians):"))
+    result = math.tan(num1)
 
-      if op == "tan":
-         num1 =int(input("enter your number:"))
-         result = math.tan(num1)
+elif op == "cos":
+    num1 = int(input("enter your number (in radians):"))
+    result = math.cos(num1)
 
-         if op == "cos":
-            num1 = int(input("enter your number:"))
-            result = math.cos(num1)
+elif op == "cot":
+    num1 = int(input("enter your number (in radians):"))
+    n = math.tan(num1)
 
-            if op == "cot":
-               num1 = int(input("enter your number:"))
-               n = math.tan(num1)
+    if n == 0 :
+        result = "Error"
+    else :
+        result = 1 / math.tan(num1)
 
-               if n == 0 :
-                  result = "Error"
-            else :
-               result = 1 / math.tan(num1)
-            if op == "factorial":
-               num1 + int(input("enter your number:"))
-               result = math.factorial
+elif op == "factorial":
+    num1 = int(input("enter your number:"))
+    result = math.factorial(num1)
 
-               if op == "sqrt":
-                  num1 = int(input("enter your number:"))
-                  result = math.sqrt
+elif op == "sqrt":
+    num1 = int(input("enter your number:"))
+    result = math.sqrt(num1)
 
-                  print (result)
+print (result)
