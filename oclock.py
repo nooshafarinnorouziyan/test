@@ -1,33 +1,38 @@
-def div(t1, t2): 
-    result = {}
-    result["h"] = t1["h"] - t2["h"]
-    result["m"] = t1["m"] - t2["m"]
-    result["s"] = t1["s"] - t2["s"]
-    result["d"] = t1["d"] - t2["d"]
+class Time:
+    def __init__(self, day, hour, minute, seconds):
+        self.day = day
+        self.hour = hour
+        self.minute = minute
+        self.seconds = seconds
+        
+    staticmethod
+    def from_dict(time_dict):
+        return Time(time_dict['d'], time_dict['h'], time_dict['m'], time_dict['s'])
+    
+    def to_dict(self):
+        return {'d': self.day, 'h': self.hour, 'm': self.minute, 's': self.seconds}
+    
+    def __sub__(self, other):
+        result = Time(self.day - other.day, self.hour - other.hour, self.minute - other.minute, self.seconds - other.seconds)
+        if result.seconds < 0:
+            result.seconds += 60
+            result.minute -= 1
+        if result.minute < 0:
+            result.minute += 60
+            result.hour -= 1
+        if result.hour < 0:
+            result.hour += 24
+            result.day -= 1
+        return result
+        
+    def __str__(self):
+        return f"{self.hour}:{self.minute}:{self.seconds}"
 
-    if result["s"] <  0:
-        result["s"] += 60
-        result["m"] -= 1
 
+t1 = {"d": 0, "h": 9, "m" : 25, "s": 35}
+t2 = {"d": 0, "h": 7, "m": 35, "s": 20}
 
-    if result["m"] < 0:
-        result["m"] += 60
-        result["h"] -= 1
-
-    if result["h"] < 0:
-        result["h"] += 24
-        result["d"] -= 1
-
-
-    return result
-
-
-def show(r):
-    print(f"{Result_time['h']} : {Result_time['m']} : {Result_time['s']}")
-
-t1 = {"d":0, "h": 9, "m" : 25, "s": 35}
-t2 = {"d": 0,"h": 7, "m": 35, "s": 20}
-
-
-Result_time = div(t1 , t2)
-show(Result_time)
+time1 = Time.from_dict(t1)
+time2 = Time.from_dict(t2)
+result_time = time1 - time2
+print(result_time)
